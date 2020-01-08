@@ -13,6 +13,8 @@
 
 ## Setup
 
+Install the Erlang Formatter from the Visual Studio Marketplace [from this link](https://marketplace.visualstudio.com/items?itemName=szTheory.erlang-formatter) or by searching from the Extensions tab within the app itself. If you have trouble finding it search for `erlang-formatter`.
+
 Install rebar3 if you haven't already, then set up the formatter steamroller for it by following [their install instructions](https://github.com/old-reliable/steamroller). Then set up rebar to have global access to steamroller by adding `{plugins, [steamroller]}` to your `~/.config/rebar3/rebar.config` file. Shortcut:
 
     touch ~/.config/rebar3/rebar.config
