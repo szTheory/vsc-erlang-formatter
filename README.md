@@ -1,11 +1,11 @@
-# erlang-formatter README
+# VSC Erlang Formatter
 
-Automatically format your Erlang code in Visual Studio Code.
+    Automatically format your Erlang code in Visual Studio Code.
 
 ## Requirements
 
-- Visual Studio Code
-- Erlang/OTP
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Erlang/OTP](https://www.erlang-solutions.com/resources/download.html)
 - [steamroller](https://github.com/old-reliable/steamroller)
 - [rebar3](https://www.rebar3.org/)
 
@@ -87,9 +87,10 @@ Add default configuration
 
 ## Thanks
 
-Thanks to the authors of these projects who were highly valuable resources:
+Thanks to the authors of these projects which were highly valuable resources:
 
 - https://github.com/old-reliable/steamroller
 - https://github.com/sarat-ravi/elixir-formatter
 - https://github.com/JakeBecker/vscode-elixir-ls
+- https://github.com/nwolverson/vscode-erlang-formatter
 - https://github.com/yuce/erlang-vscode
