@@ -1,6 +1,6 @@
-# VSC Erlang Formatter
+# <img src="images/erlang.png" width="18"> Erlang Formatter for Visual Studio Code
 
-    Automatically format your Erlang code in Visual Studio Code.
+    Automatically format your Erlang code.
 
 ## Features
 
@@ -18,8 +18,6 @@ Works great with other extensions to provide all the things this one doesn't, su
 
 - ["Erlang" (pgourlain.erlang)](https://marketplace.visualstudio.com/items?itemName=pgourlain.erlang)
 - ["Erlang/OTP" (yuce.erlang-otp)](https://marketplace.visualstudio.com/items?itemName=yuce.erlang-otp)
-
----
 
 ## Setup
 
@@ -71,8 +69,6 @@ Add the extension config to your preferences file.
   "editor.formatOnSave": true
   },
 ```
-
----
 
 ## Extension Settings
 
