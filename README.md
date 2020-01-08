@@ -97,7 +97,6 @@ Thanks to the authors of these projects which were highly valuable resources:
 
 ## TODO
 
-- Add extension marketplace icon
 - Add default configuration
 - Performance: Investigate piping the output from steamroller STDOUT directly to VS Code and replacing its internal buffer rather than steamroller overwriting the file which takes almost 1.5-2 seconds to refresh in the VS Code UI after hitting save.
 
