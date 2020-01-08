@@ -1,26 +1,43 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import child_process = require("child_process");
+import { workspace, TextDocument, TextEdit, window } from "vscode";
+var path = require("path");
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+function format(document: TextDocument): Promise<TextEdit[]> {
+  return new Promise((resolve, reject) => {
+    // Create mix command
+    const cmd = `rebar3 steamroll -f ${document.fileName}`;
+
+    // Figure out the working directory to run mix format in
+    const workspaceRootPath = workspace.rootPath ? workspace.rootPath : "";
+    const relativePath = "";
+    const cwd = path.resolve(workspaceRootPath, relativePath);
+
+    // Run the command
+    child_process.exec(cmd, { cwd }, function(error, stdout, stderr) {
+      if (error !== null) {
+        const message = `Cannot format due to syntax errors.: ${stderr}`;
+        window.showErrorMessage(message);
+        return reject(message);
+      }
+
+      return [];
+    });
+  });
+}
+
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "erlang-formatter" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
-	});
-
-	context.subscriptions.push(disposable);
+  vscode.languages.registerDocumentFormattingEditProvider("erlang", {
+    provideDocumentFormattingEdits(
+      document: TextDocument
+    ): Thenable<TextEdit[]> {
+      return document.save().then(() => {
+        return format(document);
+      });
+    }
+  });
 }
 
 // this method is called when your extension is deactivated
