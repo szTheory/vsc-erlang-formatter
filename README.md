@@ -56,6 +56,8 @@ Initial release with working formatter on auto save.
   },
 ```
 
+- Clean up marketplace listing
+
 ## Thanks
 
 Thanks to the authors of these projects which were highly valuable resources:
