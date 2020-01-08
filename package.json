@@ -7,7 +7,15 @@
   "engines": {
     "vscode": "^1.41.0"
   },
-  "repository": "https://github.com/szTheory/vsc-erlang-formatter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/szTheory/vsc-erlang-formatter"
+  },
+  "icon": "images/erlang.png",
+  "bugs": {
+    "url": "https://github.com/szTheory/vsc-erlang-formatter/issues"
+  },
+  "homepage": "https://github.com/szTheory/vsc-erlang-formatter",
   "categories": [
     "Programming Languages"
   ],

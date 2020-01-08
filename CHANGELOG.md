@@ -1,9 +1,10 @@
 # Change Log
 
-All notable changes to the "erlang-formatter" extension will be documented in this file.
+## 0.0.2
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- Updated install instructions.
+- Added icon.
 
-## [Unreleased]
+## 0.0.1
 
-- Initial release
+Initial release with working formatter on auto save.
