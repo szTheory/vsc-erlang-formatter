@@ -65,8 +65,8 @@ Add the extension config to your preferences file.
 
 ```json
   "[erlang]": {
-  "editor.defaultFormatter": "szTheory.erlang-formatter",
-  "editor.formatOnSave": true
+    "editor.defaultFormatter": "szTheory.erlang-formatter",
+    "editor.formatOnSave": true
   },
 ```
 
