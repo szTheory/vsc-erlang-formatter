@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.2
+
+- Clean up marketplace listing.
+
 ## 0.1.1
 
 - Updated readme.

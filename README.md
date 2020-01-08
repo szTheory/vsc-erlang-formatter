@@ -106,5 +106,3 @@ Thanks to the authors of these projects which were highly valuable resources:
     "editor.formatOnSave": true
   },
 ```
-
-- Clean up marketplace listing
