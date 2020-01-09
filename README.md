@@ -17,7 +17,6 @@
 Works great with other extensions to provide all the things this one doesn't, such as syntax highlighting, intellisense, and snippets. Currently tested with:
 
 - ["Erlang" (pgourlain.erlang)](https://marketplace.visualstudio.com/items?itemName=pgourlain.erlang)
-- ["Erlang/OTP" (yuce.erlang-otp)](https://marketplace.visualstudio.com/items?itemName=yuce.erlang-otp)
 
 ## Setup
 
