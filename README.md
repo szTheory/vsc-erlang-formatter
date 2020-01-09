@@ -46,6 +46,10 @@ Follow the [official Rebar install instructions](https://www.rebar3.org/docs/get
     $ ./bootstrap
     $ ./rebar3 local install
 
+Then add rebar3 to your PATH by putting it to your shell configuration file (for example `~/.zshrc` or `~/.bash_profile`).
+
+    export PATH=$PATH:~/.cache/rebar3/bin
+
 ### Install Steamroller
 
 Follow the [official Steamroller install instructions](https://github.com/old-reliable/steamroller) or use our shortcut below which sets up rebar to have global access to steamroller by adding `{plugins, [steamroller]}` to your `~/.config/rebar3/rebar.config` file.
