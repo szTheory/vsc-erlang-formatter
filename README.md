@@ -54,7 +54,7 @@ Then add rebar3 to your PATH by putting it to your shell configuration file (for
 Follow the [official Steamroller install instructions](https://github.com/old-reliable/steamroller) or use our shortcut below which sets up rebar to have global access to steamroller by adding `{plugins, [steamroller]}` to your `~/.config/rebar3/rebar.config` file.
 
     touch ~/.config/rebar3/rebar.config
-    echo "\n{plugins, [steamroller]}." >> ~/.config/rebar3/rebar.config
+    echo -e "\n{plugins, [steamroller]}." >> ~/.config/rebar3/rebar.config
 
 You should then be able to run `rebar3 steamroller` from any directory, and it will integrate with VSC Erlang Formatter.
 
