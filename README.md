@@ -1,6 +1,6 @@
 # <img src="images/erlang.png" width="18"> Erlang Formatter for Visual Studio Code
 
-    Automatically format your Erlang code with [Steamroller](https://github.com/old-reliable/steamroller). See also the [Erlang LS extension](https://marketplace.visualstudio.com/items?itemName=erlang-ls.erlang-ls) which has a faster formatter and is more actively maintained, although I'm not sure which formatter it uses.
+Automatically format your Erlang code with [Steamroller](https://github.com/old-reliable/steamroller). See also the [Erlang LS extension](https://marketplace.visualstudio.com/items?itemName=erlang-ls.erlang-ls) which has a faster formatter and is more actively maintained, although I'm not sure which formatter it uses.
 
 ## Features
 
