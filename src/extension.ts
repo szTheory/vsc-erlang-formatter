@@ -5,6 +5,21 @@ import child_process = require("child_process");
 import { workspace, TextDocument, TextEdit, window } from "vscode";
 var path = require("path");
 
+export function activate(context: vscode.ExtensionContext) {
+  vscode.languages.registerDocumentFormattingEditProvider("erlang", {
+    provideDocumentFormattingEdits(
+      document: TextDocument
+    ): Thenable<TextEdit[]> {
+      return document.save().then(() => {
+        return format(document);
+      });
+    }
+  });
+}
+
+// this method is called when your extension is deactivated
+export function deactivate() {}
+
 function format(document: TextDocument): Promise<TextEdit[]> {
   return new Promise((resolve, reject) => {
     // Create mix command
@@ -27,18 +42,3 @@ function format(document: TextDocument): Promise<TextEdit[]> {
     });
   });
 }
-
-export function activate(context: vscode.ExtensionContext) {
-  vscode.languages.registerDocumentFormattingEditProvider("erlang", {
-    provideDocumentFormattingEdits(
-      document: TextDocument
-    ): Thenable<TextEdit[]> {
-      return document.save().then(() => {
-        return format(document);
-      });
-    }
-  });
-}
-
-// this method is called when your extension is deactivated
-export function deactivate() {}
