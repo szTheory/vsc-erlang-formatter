@@ -39,22 +39,28 @@ Distributions are available from the [official Erlang website](https://www.erlan
 
 Follow the [official Rebar install instructions](https://www.rebar3.org/docs/getting-started) or use our shortcut below which downloads rebar3 to a temporary directory and installs it for your OS user.
 
-    $ cd ~/projects
-    $ git clone https://github.com/erlang/rebar3.git
-    $ cd rebar3
-    $ ./bootstrap
-    $ ./rebar3 local install
+```bash
+cd ~/projects
+git clone https://github.com/erlang/rebar3.git
+cd rebar3
+./bootstrap
+./rebar3 local install
+```
 
 Then add rebar3 to your PATH by putting it to your shell configuration file (for example `~/.zshrc` or `~/.bash_profile`).
 
-    export PATH=$PATH:~/.cache/rebar3/bin
+```bash
+export PATH=$PATH:~/.cache/rebar3/bin
+```
 
 ### Install Steamroller
 
 Follow the [official Steamroller install instructions](https://github.com/old-reliable/steamroller) or use our shortcut below which sets up rebar to have global access to steamroller by adding `{plugins, [steamroller]}` to your `~/.config/rebar3/rebar.config` file.
 
-    touch ~/.config/rebar3/rebar.config
-    echo -e "\n{plugins, [steamroller]}." >> ~/.config/rebar3/rebar.config
+```bash
+touch ~/.config/rebar3/rebar.config
+echo -e "\n{plugins, [steamroller]}." >> ~/.config/rebar3/rebar.config
+```
 
 You should then be able to run `rebar3 steamroller` from any directory, and it will integrate with VSC Erlang Formatter.
 
