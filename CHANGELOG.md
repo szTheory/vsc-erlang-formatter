@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.0
+
+Fix regression bug on format. Improve speed. Add support for `rebar3_format` and `erlfmt`.
+
 ## 0.1.2
 
 - Clean up marketplace listing.
