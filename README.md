@@ -1,6 +1,9 @@
 # <img src="images/erlang.png" width="18"> Erlang Formatter for Visual Studio Code
 
-Automatically format your Erlang code with [Steamroller](https://github.com/old-reliable/steamroller).
+> Automatically format your Erlang code.
+
+- [Features](#features)
+- [Setup](#setup)
 
 ## Features
 
@@ -8,36 +11,15 @@ Automatically format your Erlang code with [Steamroller](https://github.com/old-
 
 ![Auto format on save](https://user-images.githubusercontent.com/28652/72016514-d37fc400-325b-11ea-8a88-29608d198860.gif)
 
-### Notify of formatter error
-
-![Notify of formatter error](https://user-images.githubusercontent.com/28652/72013240-6a954d80-3255-11ea-8f49-524ebafdc489.png)
-
-### Compatible with your favorite Erlang extensions
-
-Works great with other extensions to provide all the things this one doesn't, such as syntax highlighting, intellisense, and snippets. Currently tested with:
-
-- ["Erlang" (pgourlain.erlang)](https://marketplace.visualstudio.com/items?itemName=pgourlain.erlang)
-
 ## Setup
 
-### Requirements
-
-- [Visual Studio Code](https://code.visualstudio.com/) - Code editor
-- [Erlang/OTP](https://www.erlang-solutions.com/resources/download.html) - Erlang distribution
-- [rebar3](https://www.rebar3.org/) - Erlang package manager
-- [steamroller](https://github.com/old-reliable/steamroller) - Erlang formatter
-
-### Install extension
+### 1. Install the VSC extension
 
 Install the Erlang Formatter from the Visual Studio Marketplace [from this link](https://marketplace.visualstudio.com/items?itemName=szTheory.erlang-formatter) or by searching from the Extensions tab within the app itself. If you have trouble finding it search for `erlang-formatter`.
 
-### Install Erlang
+### 2. Install Rebar
 
-Distributions are available from the [official Erlang website](https://www.erlang.org/downloads) or [Erlang Solutions](https://www.erlang-solutions.com/resources/download.html).
-
-### Install Rebar3
-
-Follow the [official Rebar install instructions](https://www.rebar3.org/docs/getting-started) or use our shortcut below which downloads rebar3 to a temporary directory and installs it for your OS user.
+Follow the [official Rebar install instructions](https://www.rebar3.org/docs/getting-started) or use the commands below which will download rebar3 to a temporary directory and install it for your OS user.
 
 ```bash
 cd ~/projects
@@ -53,42 +35,56 @@ Then add rebar3 to your PATH by putting it to your shell configuration file (for
 export PATH=$PATH:~/.cache/rebar3/bin
 ```
 
-### Install Steamroller
+### 3a. Default formatter setup
 
-Follow the [official Steamroller install instructions](https://github.com/old-reliable/steamroller) or use our shortcut below which sets up rebar to have global access to steamroller by adding `{plugins, [steamroller]}` to your `~/.config/rebar3/rebar.config` file.
+If you just want to get up and running quickly, run the following command for a good default. Otherwise read the section below for more detail.
 
 ```bash
-touch ~/.config/rebar3/rebar.config
-echo -e "\n{plugins, [steamroller]}." >> ~/.config/rebar3/rebar.config
+echo -e "{plugins, [rebar3_format]}." >> ~/.config/rebar3/rebar.config
 ```
 
-You should then be able to run `rebar3 steamroller` from any directory, and it will integrate with VSC Erlang Formatter.
+**NOTE**: The first time you format your code it might take a few seconds if rebar3 hasn't already downloaded the formatter plugin.
 
-### Configure VS Code for Erlang Formatter
+### 3b. Choosing a specific formatter
+
+There are three main options for Erlang formatters right now. They are all written in Erlang and depend on rebar3. There's no community consensus on which to use, so you'll just have to pick one. Simply add the plugin to your project's `rebar.config` file, or set it up globally by adding it to `~/.config/rebar3/rebar.config` instead. Then you'll be able to format Erlang files anywhere without project configuration.
+
+- [rebar3_format](https://github.com/AdRoll/rebar3_format) - Highly configurable formatter
+
+```erlang
+{plugins, [rebar3_format]}.
+```
+
+- [Steamroller](https://github.com/old-reliable/steamroller) - Opinionated formatter with minimal configuration
+
+```erlang
+{plugins, [steamroller]}.
+```
+
+- [erlfmt](https://github.com/whatsapp/erlfmt) - Opinionated formatter with minimal configuration
+
+```erlang
+{plugins, [erlfmt]}.
+```
+
+### 4. Extension configuration
 
 Add the extension config to your preferences file.
 
-- Open preferences (Mac: `cmd + ,`)
-- Open settings.json (Click the icon at the top right with the document's corner being folded over to open the file)
+- Open preferences (`Cmd/Ctrl + ,`)
+- Open `settings.json` (Click the icon at the top right with the document's corner being folded over to open the file)
 - Paste this in:
 
 ```json
-  "[erlang]": {
-    "editor.defaultFormatter": "szTheory.erlang-formatter",
-    "editor.formatOnSave": true
-  },
+"[erlang]": {
+  "editor.defaultFormatter": "szTheory.erlang-formatter",
+  "editor.formatOnSave": true
+},
+"erlangFormatter.formatter": "rebar3_format",
 ```
 
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
+**NOTE**: If you want to use another formatter just replace `rebar3_format` with either `steamroller` or `erlfmt`.
+**NOTE**: You don't need to enable `formatOnSave`. If it's disabled then you can just manually select `Format Document` from the Command Palette (`Cmd/Ctrl + Shift + P`) in VS Code to run the formatter.
 
 ## Links
 
@@ -96,22 +92,17 @@ This extension contributes the following settings:
 
 ## Thanks
 
-Thanks to the authors of these projects which were highly valuable resources:
+Thanks to the authors of these projects, which were highly valuable resources.
 
-- https://github.com/old-reliable/steamroller
-- https://github.com/sarat-ravi/elixir-formatter
-- https://github.com/JakeBecker/vscode-elixir-ls
-- https://github.com/nwolverson/vscode-erlang-formatter
-- https://github.com/yuce/erlang-vscode
+### Formatters
 
-## TODO
+- [rebar3_fmt](https://github.com/AdRoll/rebar3_format)
+- [Steamroller](https://github.com/old-reliable/steamroller)
+- [erlfmt](https://github.com/whatsapp/erlfmt)
 
-- Add default configuration
-- Performance: Investigate piping the output from steamroller STDOUT directly to VS Code and replacing its internal buffer rather than steamroller overwriting the file which takes almost 1.5-2 seconds to refresh in the VS Code UI after hitting save.
+### Visual Studio Code Extensions
 
-```json
-  "[erlang]": {
-    "editor.defaultFormatter": "szTheory.erlang-formatter",
-    "editor.formatOnSave": true
-  },
-```
+- [Elixir Formatter](https://github.com/sarat-ravi/elixir-formatter)
+- [Elixir LS](https://github.com/elixir-lsp/vscode-elixir-ls)
+- [vscode-erlang-formatter](https://github.com/nwolverson/vscode-erlang-formatter)
+- [Erlang/OTP](https://github.com/yuce/erlang-vscode)

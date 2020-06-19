@@ -21,10 +21,11 @@
   },
   "homepage": "https://github.com/szTheory/vsc-erlang-formatter",
   "categories": [
-    "Programming Languages"
+    "Formatters"
   ],
   "activationEvents": [
-    "onLanguage:erlang"
+    "onLanguage:erlang",
+    "onCommand:erlang-formatter.formatProject"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -40,7 +41,22 @@
           ".escript"
         ]
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Erlang Formatter",
+      "properties": {
+        "erlangFormatter.formatter": {
+          "description": "Formatter to use",
+          "type": "string",
+          "enum": [
+            "rebar3_format",
+            "steamroller",
+            "erlfmt"
+          ],
+          "default": "rebar3_format"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
