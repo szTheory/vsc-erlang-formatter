@@ -106,3 +106,13 @@ Thanks to the authors of these projects, which were highly valuable resources.
 - [Elixir LS](https://github.com/elixir-lsp/vscode-elixir-ls)
 - [vscode-erlang-formatter](https://github.com/nwolverson/vscode-erlang-formatter)
 - [Erlang/OTP](https://github.com/yuce/erlang-vscode)
+
+## Releasing
+
+1. Bump the version number
+2. Update `CHANGELOG.md`
+3. `npm run test`
+4. `vsce package`
+5. `vsce publish`
+
+For more info see ["Publishing Extensions"](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
