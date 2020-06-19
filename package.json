@@ -24,8 +24,7 @@
     "Formatters"
   ],
   "activationEvents": [
-    "onLanguage:erlang",
-    "onCommand:erlang-formatter.formatProject"
+    "onLanguage:erlang"
   ],
   "main": "./out/extension.js",
   "contributes": {
