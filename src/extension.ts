@@ -5,8 +5,8 @@ import child_process = require("child_process");
 import { workspace, TextDocument, TextEdit, window } from "vscode";
 import path = require("path");
 
-type FormatterName = "rebar3_format" | "steamroller" | "erlfmt";
-type FormatterCommand = "format" | "steamroll" | "fmt";
+type FormatterName = "rebar3_format" | "steamroller" | "erlfmt" | "rebar3_efmt";
+type FormatterCommand = "format" | "steamroll" | "fmt" | "efmt";
 
 function format(
   filePath: string,
@@ -76,6 +76,8 @@ function formatterArgs(outputChannel: vscode.OutputChannel): string[] {
       return [formatterCommand(formatter), "-f"];
     case "erlfmt":
       return [formatterCommand(formatter), "-w"];
+    case "rebar3_efmt":
+      return [formatterCommand(formatter), "-w"];
     default:
       throw new Error(
         `Error while reading Erlang formatter configuration: ${formatter}`
@@ -108,6 +110,8 @@ function formatterName(formatterCommand: FormatterCommand): FormatterName {
       return "steamroller";
     case "fmt":
       return "erlfmt";
+    case "efmt":
+      return "rebar3_efmt";
     default:
       throw new Error(
         `Could not find the formatter name for ${formatterCommand}`
@@ -123,6 +127,8 @@ function formatterCommand(formatterName: FormatterName): FormatterCommand {
       return "steamroll";
     case "erlfmt":
       return "fmt";
+    case "rebar3_efmt":
+      return "efmt";
     default:
       throw new Error(
         `Could not find the formatter command for ${formatterName}`
