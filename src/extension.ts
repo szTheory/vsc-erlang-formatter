@@ -69,15 +69,17 @@ function formatterArgs(outputChannel: vscode.OutputChannel): string[] {
   const config = workspace.getConfiguration("erlangFormatter");
   const formatter = config.get("formatter");
 
+  const optional_args: string[] = config.get("args") || [];
+
   switch (formatter) {
     case "rebar3_format":
-      return [formatterCommand(formatter), "--files"];
+      return [formatterCommand(formatter), "--files"].concat(optional_args);
     case "steamroller":
-      return [formatterCommand(formatter), "-f"];
+      return [formatterCommand(formatter), "-f"].concat(optional_args);
     case "erlfmt":
-      return [formatterCommand(formatter), "-w"];
+      return [formatterCommand(formatter), "-w"].concat(optional_args);
     case "rebar3_efmt":
-      return [formatterCommand(formatter), "-w"];
+      return [formatterCommand(formatter), "-w"].concat(optional_args);
     default:
       throw new Error(
         `Error while reading Erlang formatter configuration: ${formatter}`
